@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Watch Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
-<link rel="stylesheet" href="">
+
 </head>
 <body>
     <div class="dashboard-container">
@@ -95,6 +95,8 @@
                             <p>Total Customers</p>
                         </div>
                     </div>
+
+                    
                 </div>
 
                 <!-- Products Table -->
