@@ -605,11 +605,16 @@
             background: var(--gold);
             transition: var(--transition);
         }
+     
+
+
+        
 
         .footer-column a:hover {
             color: var(--gold);
             padding-left: 10px;
         }
+        
 
         .footer-column a:hover::before {
             width: 100%;
@@ -620,7 +625,7 @@
             gap: 1rem;
             margin-top: 1.5rem;
         }
-
+    
         .social-links a {
             display: inline-flex;
             align-items: center;
@@ -633,6 +638,9 @@
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
+      
+
+    
         .social-links a:hover {
             background: var(--gold);
             color: var(--charcoal);

@@ -3,6 +3,8 @@
 
 @section('content')
 
+  
+
 
  <section class="products-section">
         <div class="container">
@@ -75,10 +77,14 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
+
+
+
+
 @endsection
 
 
