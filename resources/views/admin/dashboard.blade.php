@@ -166,14 +166,39 @@
                 <div class="modal-body">
                     <form id="productForm">
                         <div class="form-row">
+
                             <div class="form-group">
-                                <label for="productName">Product Name</label>
-                                <input type="text" id="productName" class="form-control"
-                                    placeholder="Enter product name">
+                                <label for="badge">Badge (Optional)</label>
+
+                                <select name="badge" class="form-control">
+                                    <option value="">No Badge</option>
+                                    <option value="Limited Edition">Limited Edition</option>
+                                    <option value="Exclusive">Exclusive</option>
+                                    <option value="New Arrival">New Arrival</option>
+                                    <option value="Bestseller">Bestseller</option>
+                                    <option value="Luxury Collection">Luxury Collection</option>
+                                    <option value="Trending">Trending</option>
+                                    <option value="Classic">Classic</option>
+                                    <option value="Special Edition">Special Edition</option>
+                                    <option value="On Sale">On Sale</option>
+                                </select>
+
                             </div>
                             <div class="form-group">
-                                <label for="productCategory">Category</label>
-                                <select id="productCategory" class="form-control">
+                                <label for="badge">Image URL</label>
+                                <input type="text" name="badge" class="form-control"
+                                    placeholder="Enter image URL">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="overlay_description">Overlay Description Product</label>
+                                <textarea name="overlay_description" class="form-control" placeholder="Product Overlay Description"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select name="category" class="form-control">
                                     <option value="">Select Category</option>
                                     <option value="Men's Collection">Men's Collection</option>
                                     <option value="Women's Collection">Women's Collection</option>
@@ -182,36 +207,30 @@
                                     <option value="Limited Edition">Limited Edition</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="name">Product Name</label>
+                                <input type="text" name="name" class="form-control"
+                                    placeholder="Enter product name">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea name="description" class="form-control" placeholder="Enter product description"></textarea>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="productPrice">Price ($)</label>
-                                <input type="number" id="productPrice" class="form-control"
+                                <label for="price">Price ($)</label>
+                                <input type="number" name="price" class="form-control"
                                     placeholder="Enter price">
                             </div>
                             <div class="form-group">
-                                <label for="productStock">Stock</label>
-                                <input type="number" id="productStock" class="form-control"
+                                <label for="stock">Stock</label>
+                                <input type="number" name="stock" class="form-control"
                                     placeholder="Enter stock quantity">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="productDescription">Description</label>
-                            <textarea id="productDescription" class="form-control" placeholder="Enter product description"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="productImage">Image URL</label>
-                            <input type="text" id="productImage" class="form-control"
-                                placeholder="Enter image URL">
-                        </div>
-                        <div class="form-group">
-                            <label for="productBadge">Badge (Optional)</label>
-                            <select id="productBadge" class="form-control">
-                                <option value="">No Badge</option>
-                                <option value="Limited Edition">Limited Edition</option>
-                                <option value="Exclusive">Exclusive</option>
-                                <option value="New">New</option>
-                            </select>
                         </div>
                     </form>
                 </div>

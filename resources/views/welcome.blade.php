@@ -11,7 +11,7 @@
             </div>
             <div class="products-grid">
                 <!-- Product 1 -->
-                
+
                 <div class="product-card">
                     <div class="product-badge">Limited Edition</div>
                     <div class="product-image">
