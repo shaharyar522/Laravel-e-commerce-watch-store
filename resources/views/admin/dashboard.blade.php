@@ -18,6 +18,7 @@
             <div class="sidebar-header">
                 <h2>Watch Store</h2>
                 <p>Admin Dashboard</p>
+
             </div>
             <div class="sidebar-menu">
                 <ul>
@@ -98,8 +99,6 @@
                             <p>Total Customers</p>
                         </div>
                     </div>
-
-
                 </div>
 
                 <!-- Products Table -->
@@ -116,33 +115,41 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Badge</th>
                                     <th>Image</th>
-                                    <th>Name</th>
+                                    <th>Overlay Description</th>
                                     <th>Category</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
                                     <th>Price</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>Stock</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#001</td>
-                                    <td>
-                                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80"
-                                            alt="Product"
-                                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
-                                    </td>
-                                    <td>Heritage Chronograph</td>
-                                    <td>Men's Collection</td>
-                                    <td>$4,850</td>
-                                    <td><span class="badge badge-success">In Stock</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
+                                @foreach ($products as $product)
+                                    <tr>
+                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $product->badge }}</td>
+                                        <td>
+                                            <img src="{{ $product->image_url }}"
+                                                style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                                        </td>
+                                        <td>{{ $product->overlay_description }}</td>
+                                        <td>{{ $product->category }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->description }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td><span class="badge badge-success">{{ $product->stock }}</span></td>
+                                        <td> <button type="button" class="btn btn-warning btn-sm editBtn"
+                                                data-id="{{ $product->id }}" data-bs-toggle="modal"
+                                                data-bs-target="#editModal">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
                                             <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -164,8 +171,11 @@
                     <h5 class="modal-title" id="staticBackdropLabel">Add New Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="productForm">
+                <form id="productForm" action="{{ route('products.store') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
+
                         <div class="row g-3">
 
                             <div class="col-md-6">
@@ -185,8 +195,14 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="image" class="form-label">Image URL</label>
-                                <input type="text" id="image" name="image" class="form-control"
+                                <label class="form-label">Product Image</label>
+                                <input type="file" id="image_file" name="image_file" class="form-control">
+                                <small class="text-muted">Or provide an image URL below</small>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="image_url" class="form-label">Image URL</label>
+                                <input type="text" id="image_url" name="image_url" class="form-control"
                                     placeholder="Enter image URL">
                             </div>
 
@@ -237,8 +253,79 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save Product</button>
+                        <button type="submit" class="btn btn-primary">Add Product</button>
                     </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Edit Modal-->
+
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="editProductForm" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label"></label>
+                                <select id="editBadge" name="badge" class="form-control">
+                                    <option value="">No Badge</option>
+                                    <option value="Limited Edition">Limited Edition</option>
+                                    <option value="Exclusive">Exclusive</option>
+                                    <option value="New Arrival">New Arrival</option>
+                                    <option value="Bestseller">Bestseller</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Product Image</label>
+                                <input type="file" id="editImageFile" name="image_file" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Image URL</label>
+                                <input type="text" id="editImageUrl" name="image_url" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Overlay Description</label>
+                                <textarea id="editOverlay" name="overlay_description" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Category</label>
+                                <input type="text" id="editCategory" name="category" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Name</label>
+                                <input type="text" id="editName" name="name" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">{{ $product->description }}</label>
+                                <textarea id="editDescription" name="description" class="form-control" rows="4"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Price</label>
+                                <input type="number" id="editPrice" name="price" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Stock</label>
+                                <input type="number" id="editStock" name="stock" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Product</button>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -252,7 +339,51 @@
 
 
 
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('image_file').addEventListener('change', function() {
+            if (this.files.length) document.getElementById('image_url').disabled = true;
+            else document.getElementById('image_url').disabled = false;
+        });
+
+        document.getElementById('image_url').addEventListener('input', function() {
+            if (this.value) document.getElementById('image_file').disabled = true;
+            else document.getElementById('image_file').disabled = false;
+        });
+    </script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.editBtn').forEach(button => {
+        button.addEventListener('click', function () {
+            const id = this.getAttribute('data-id');
+
+            // Fetch product data using AJAX
+            fetch(`/products/${id}/edit`)
+                .then(response => response.json())
+                .then(product => {
+                    // Fill modal fields
+                    document.getElementById('editName').value = product.name;
+                    document.getElementById('editCategory').value = product.category;
+                    document.getElementById('editPrice').value = product.price;
+                    document.getElementById('editStock').value = product.stock;
+                    document.getElementById('editBadge').value = product.badge;
+                    document.getElementById('editDescription').value = product.description;
+                    document.getElementById('editOverlay').value = product.overlay_description;
+                    document.getElementById('editImageUrl').value = product.image_url;
+
+                    // Update form action
+                    document.getElementById('editProductForm').action = `/products/${id}`;
+                })
+                .catch(error => console.error('Error loading product:', error));
+        });
+    });
+});
+</script>
+
 
 </body>
 </html>

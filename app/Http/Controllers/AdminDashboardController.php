@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product;
 use App\Models\AdminDashboard;
 use Illuminate\Http\Request;
 
@@ -12,8 +12,9 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        $product = AdminDashboard::all();
-         return view('admin.dashboard');
+        $products = Product::all();
+        return view('admin.dashboard', compact('products'));
+
     }
 
     /**
