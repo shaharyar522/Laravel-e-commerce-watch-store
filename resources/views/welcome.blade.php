@@ -2,11 +2,8 @@
 
 
 @section('content')
+    <section class="products-section">
 
-  
-
-
- <section class="products-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Masterpieces</span>
@@ -14,10 +11,12 @@
             </div>
             <div class="products-grid">
                 <!-- Product 1 -->
+                
                 <div class="product-card">
                     <div class="product-badge">Limited Edition</div>
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Heritage Chronograph">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                            alt="Heritage Chronograph">
                         <div class="product-overlay">
                             <p>Swiss automatic movement with 72-hour power reserve</p>
                         </div>
@@ -40,7 +39,8 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Mariner Professional">
+                        <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                            alt="Mariner Professional">
                         <div class="product-overlay">
                             <p>Water resistant to 300m with unidirectional bezel</p>
                         </div>
@@ -61,7 +61,8 @@
                 <div class="product-card">
                     <div class="product-badge">Exclusive</div>
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Minimalist Artisan">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                            alt="Minimalist Artisan">
                         <div class="product-overlay">
                             <p>Hand-finished movement with 80-hour power reserve</p>
                         </div>
@@ -81,10 +82,4 @@
             </div>
         </div>
     </section>
-
-
-
-
 @endsection
-
-

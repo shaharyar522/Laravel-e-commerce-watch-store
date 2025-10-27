@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Watch Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-
-
 </head>
+
 <body>
     <div class="dashboard-container">
         <!-- Sidebar -->
@@ -19,7 +20,8 @@
             </div>
             <div class="sidebar-menu">
                 <ul>
-                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span></a></li>
                     <li><a href="#"><i class="fas fa-shopping-bag"></i> <span>Products</span></a></li>
                     <li><a href="#"><i class="fas fa-shopping-cart"></i> <span>Orders</span></a></li>
                     <li><a href="#"><i class="fas fa-users"></i> <span>Customers</span></a></li>
@@ -96,15 +98,17 @@
                         </div>
                     </div>
 
-                    
+
                 </div>
 
                 <!-- Products Table -->
                 <div class="card">
                     <div class="card-header">
                         <h2>Product List</h2>
-                        <button class="btn btn-primary" id="addProductBtn">
-                            <i class="fas fa-plus"></i> Add Product
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            Add Product
                         </button>
                     </div>
                     <div class="card-body">
@@ -124,44 +128,14 @@
                                 <tr>
                                     <td>#001</td>
                                     <td>
-                                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80" alt="Product" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+                                        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80"
+                                            alt="Product"
+                                            style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
                                     </td>
                                     <td>Heritage Chronograph</td>
                                     <td>Men's Collection</td>
                                     <td>$4,850</td>
                                     <td><span class="badge badge-success">In Stock</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#002</td>
-                                    <td>
-                                        <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80" alt="Product" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
-                                    </td>
-                                    <td>Mariner Professional</td>
-                                    <td>Sports Collection</td>
-                                    <td>$3,950</td>
-                                    <td><span class="badge badge-success">In Stock</span></td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#003</td>
-                                    <td>
-                                        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&q=80" alt="Product" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
-                                    </td>
-                                    <td>Minimalist Artisan</td>
-                                    <td>Artisan Collection</td>
-                                    <td>$12,500</td>
-                                    <td><span class="badge badge-warning">Low Stock</span></td>
                                     <td>
                                         <div class="action-buttons">
                                             <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
@@ -177,106 +151,82 @@
         </div>
     </div>
 
-    <!-- Add Product Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Add New Product</h3>
-                <button class="modal-close" id="closeModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="productForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="productName">Product Name</label>
-                            <input type="text" id="productName" class="form-control" placeholder="Enter product name">
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="productForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productName">Product Name</label>
+                                <input type="text" id="productName" class="form-control"
+                                    placeholder="Enter product name">
+                            </div>
+                            <div class="form-group">
+                                <label for="productCategory">Category</label>
+                                <select id="productCategory" class="form-control">
+                                    <option value="">Select Category</option>
+                                    <option value="Men's Collection">Men's Collection</option>
+                                    <option value="Women's Collection">Women's Collection</option>
+                                    <option value="Sports Collection">Sports Collection</option>
+                                    <option value="Artisan Collection">Artisan Collection</option>
+                                    <option value="Limited Edition">Limited Edition</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="productPrice">Price ($)</label>
+                                <input type="number" id="productPrice" class="form-control"
+                                    placeholder="Enter price">
+                            </div>
+                            <div class="form-group">
+                                <label for="productStock">Stock</label>
+                                <input type="number" id="productStock" class="form-control"
+                                    placeholder="Enter stock quantity">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="productCategory">Category</label>
-                            <select id="productCategory" class="form-control">
-                                <option value="">Select Category</option>
-                                <option value="Men's Collection">Men's Collection</option>
-                                <option value="Women's Collection">Women's Collection</option>
-                                <option value="Sports Collection">Sports Collection</option>
-                                <option value="Artisan Collection">Artisan Collection</option>
+                            <label for="productDescription">Description</label>
+                            <textarea id="productDescription" class="form-control" placeholder="Enter product description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="productImage">Image URL</label>
+                            <input type="text" id="productImage" class="form-control"
+                                placeholder="Enter image URL">
+                        </div>
+                        <div class="form-group">
+                            <label for="productBadge">Badge (Optional)</label>
+                            <select id="productBadge" class="form-control">
+                                <option value="">No Badge</option>
                                 <option value="Limited Edition">Limited Edition</option>
+                                <option value="Exclusive">Exclusive</option>
+                                <option value="New">New</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="productPrice">Price ($)</label>
-                            <input type="number" id="productPrice" class="form-control" placeholder="Enter price">
-                        </div>
-                        <div class="form-group">
-                            <label for="productStock">Stock</label>
-                            <input type="number" id="productStock" class="form-control" placeholder="Enter stock quantity">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="productDescription">Description</label>
-                        <textarea id="productDescription" class="form-control" placeholder="Enter product description"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="productImage">Image URL</label>
-                        <input type="text" id="productImage" class="form-control" placeholder="Enter image URL">
-                    </div>
-                    <div class="form-group">
-                        <label for="productBadge">Badge (Optional)</label>
-                        <select id="productBadge" class="form-control">
-                            <option value="">No Badge</option>
-                            <option value="Limited Edition">Limited Edition</option>
-                            <option value="Exclusive">Exclusive</option>
-                            <option value="New">New</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn" id="cancelBtn">Cancel</button>
-                <button class="btn btn-primary" id="saveProductBtn">Save Product</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Product</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Toggle Sidebar
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('active');
-        });
 
-        // Modal Functions
-        const modal = document.getElementById('productModal');
-        const addProductBtn = document.getElementById('addProductBtn');
-        const closeModal = document.getElementById('closeModal');
-        const cancelBtn = document.getElementById('cancelBtn');
-        const saveProductBtn = document.getElementById('saveProductBtn');
 
-        addProductBtn.addEventListener('click', function() {
-            modal.classList.add('show');
-        });
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-        closeModal.addEventListener('click', function() {
-            modal.classList.remove('show');
-        });
-
-        cancelBtn.addEventListener('click', function() {
-            modal.classList.remove('show');
-        });
-
-        saveProductBtn.addEventListener('click', function() {
-            // Here you would typically save the product data
-            alert('Product saved successfully!');
-            modal.classList.remove('show');
-            document.getElementById('productForm').reset();
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                modal.classList.remove('show');
-            }
-        });
-    </script>
 </body>
+
 </html>

@@ -1,0 +1,101 @@
+    <!-- Add Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Product</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Product Name</label>
+                            <input type="text" id="productName" class="form-control" placeholder="Enter product name">
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Category</label>
+                            <select id="productCategory" class="form-control">
+                                <option value="">Select Category</option>
+                                <option value="Men's Collection">Men's Collection</option>
+                                <option value="Women's Collection">Women's Collection</option>
+                                <option value="Sports Collection">Sports Collection</option>
+                                <option value="Artisan Collection">Artisan Collection</option>
+                                <option value="Limited Edition">Limited Edition</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Price ($)</label>
+                            <input type="number" id="productPrice" class="form-control" placeholder="Enter price">
+                        </div>
+                        <div class="form-group">
+                            <label for="productStock">Stock</label>
+                            <input type="number" id="productStock" class="form-control" placeholder="Enter stock quantity">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Description</label>
+                        <textarea id="productDescription" class="form-control" placeholder="Enter product description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="productImage">Image URL</label>
+                        <input type="text" id="productImage" class="form-control" placeholder="Enter image URL">
+                    </div>
+                    <div class="form-group">
+                        <label for="productBadge">Badge (Optional)</label>
+                        <select id="productBadge" class="form-control">
+                            <option value="">No Badge</option>
+                            <option value="Limited Edition">Limited Edition</option>
+                            <option value="Exclusive">Exclusive</option>
+                            <option value="New">New</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" id="cancelBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveProductBtn">Save Product</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Sidebar
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Modal Functions
+        const modal = document.getElementById('productModal');
+        const addProductBtn = document.getElementById('addProductBtn');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const saveProductBtn = document.getElementById('saveProductBtn');
+
+        addProductBtn.addEventListener('click', function() {
+            modal.classList.add('show');
+        });
+
+        closeModal.addEventListener('click', function() {
+            modal.classList.remove('show');
+        });
+
+        cancelBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+        });
+
+        saveProductBtn.addEventListener('click', function() {
+            // Here you would typically save the product data
+            alert('Product saved successfully!');
+            modal.classList.remove('show');
+            document.getElementById('productForm').reset();
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    </script>
