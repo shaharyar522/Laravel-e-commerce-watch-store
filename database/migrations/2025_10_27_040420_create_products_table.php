@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
+            
             $table->id();
             $table->string('badge')->nullable();
             $table->string('image_url');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('stock')->default(0);
             $table->timestamps();
+
         });
     }
 

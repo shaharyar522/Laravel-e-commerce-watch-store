@@ -9,6 +9,7 @@
                 <span class="section-subtitle">Masterpieces</span>
                 <h2 class="section-title">Signature Collection</h2>
             </div>
+            
             <div class="products-grid">
                 <!-- Product 1 -->
 
@@ -32,9 +33,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
 
                 <!-- Product 2 -->
                 <div class="product-card">

@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <div class="dashboard-container">
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
@@ -105,7 +106,6 @@
                 <div class="card">
                     <div class="card-header">
                         <h2>Product List</h2>
-
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
                             Add Product
@@ -155,22 +155,22 @@
 
 
     <!-- Modal -->
+
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Add New Product</h1>
+                    <h5 class="modal-title" id="staticBackdropLabel">Add New Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form id="productForm">
-                        <div class="form-row">
+                <form id="productForm">
+                    <div class="modal-body">
+                        <div class="row g-3">
 
-                            <div class="form-group">
-                                <label for="badge">Badge (Optional)</label>
-
-                                <select name="badge" class="form-control">
+                            <div class="col-md-6">
+                                <label for="badge" class="form-label">Badge (Optional)</label>
+                                <select id="badge" name="badge" class="form-control">
                                     <option value="">No Badge</option>
                                     <option value="Limited Edition">Limited Edition</option>
                                     <option value="Exclusive">Exclusive</option>
@@ -182,23 +182,24 @@
                                     <option value="Special Edition">Special Edition</option>
                                     <option value="On Sale">On Sale</option>
                                 </select>
-
                             </div>
-                            <div class="form-group">
-                                <label for="badge">Image URL</label>
-                                <input type="text" name="badge" class="form-control"
+
+                            <div class="col-md-6">
+                                <label for="image" class="form-label">Image URL</label>
+                                <input type="text" id="image" name="image" class="form-control"
                                     placeholder="Enter image URL">
                             </div>
 
-
-                            <div class="form-group">
-                                <label for="overlay_description">Overlay Description Product</label>
-                                <textarea name="overlay_description" class="form-control" placeholder="Product Overlay Description"></textarea>
+                            <div class="col-12">
+                                <label for="overlay_description" class="form-label">Overlay Description
+                                    Product</label>
+                                <textarea id="overlay_description" name="overlay_description" class="form-control"
+                                    placeholder="Product Overlay Description" rows="3"></textarea>
                             </div>
 
-                            <div class="form-group">
-                                <label for="category">Category</label>
-                                <select name="category" class="form-control">
+                            <div class="col-md-6">
+                                <label for="category" class="form-label">Category</label>
+                                <select id="category" name="category" class="form-control">
                                     <option value="">Select Category</option>
                                     <option value="Men's Collection">Men's Collection</option>
                                     <option value="Women's Collection">Women's Collection</option>
@@ -208,44 +209,50 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <label for="name">Product Name</label>
-                                <input type="text" name="name" class="form-control"
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Product Name</label>
+                                <input type="text" id="name" name="name" class="form-control"
                                     placeholder="Enter product name">
                             </div>
 
-                        </div>
+                            <div class="col-12">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea id="description" name="description" class="form-control" placeholder="Enter product description"
+                                    rows="4"></textarea>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <textarea name="description" class="form-control" placeholder="Enter product description"></textarea>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="price">Price ($)</label>
-                                <input type="number" name="price" class="form-control"
+                            <div class="col-md-6">
+                                <label for="price" class="form-label">Price ($)</label>
+                                <input type="number" id="price" name="price" class="form-control"
                                     placeholder="Enter price">
                             </div>
-                            <div class="form-group">
-                                <label for="stock">Stock</label>
-                                <input type="number" name="stock" class="form-control"
+
+                            <div class="col-md-6">
+                                <label for="stock" class="form-label">Stock</label>
+                                <input type="number" id="stock" name="stock" class="form-control"
                                     placeholder="Enter stock quantity">
                             </div>
+
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Product</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Product</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
 
 
+
+
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>
