@@ -387,42 +387,38 @@
     </script>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
-        $(document).ready(function() {
-            $('.editBtn').click(function() {
-                let id = $(this).data('id');
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.editBtn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
 
-                $.ajax({
-                    url: `/admin/products/${id}/edit`,
-                    type: 'GET',
-                    success: function(product) {
-                        // Fill modal fields
-                        $('#editName').val(product.name);
-                        $('#editCategory').val(product.category);
-                        $('#editPrice').val(product.price);
-                        $('#editStock').val(product.stock);
-                        $('#editBadge').val(product.badge);
-                        $('#editDescription').val(product.description);
-                        $('#editOverlay').val(product.overlay_description);
-                        $('#editImageUrl').val(product.image_url);
+                    fetch(`/admin/products/${id}/edit`)
+                        .then(response => {
+                            if (!response.ok) throw new Error('Product not found');
+                            return response.json();
+                        })
+                        .then(product => {
+                            document.getElementById('editName').value = product.name;
+                            document.getElementById('editCategory').value = product.category;
+                            document.getElementById('editPrice').value = product.price;
+                            document.getElementById('editStock').value = product.stock;
+                            document.getElementById('editBadge').value = product.badge;
+                            document.getElementById('editDescription').value = product
+                                .description;
+                            document.getElementById('editOverlay').value = product
+                                .overlay_description;
+                            document.getElementById('editImageUrl').value = product.image_url;
 
-                        // Update form action dynamically
-                        $('#editProductForm').attr('action', `/admin/products/${id}`);
-
-                        // Show the modal
-                        $('#editModal').modal('show');
-                    },
-                    error: function(xhr) {
-                        console.error('Error fetching product:', xhr.responseText);
-                        alert('Unable to load product data.');
-                    }
+                            // Update form action dynamically
+                            document.getElementById('editProductForm').action =
+                                `/admin/products/${id}`;
+                        })
+                        .catch(error => console.error('Error loading product:', error));
                 });
             });
         });
     </script>
-
 
 
 

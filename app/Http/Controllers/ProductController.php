@@ -90,11 +90,11 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-  public function edit($id)
-{
-    $product = Product::findOrFail($id);
-    return response()->json($product); // 👈 Return JSON for AJAX
-}
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return response()->json($product);
+    }
 
 
     /**
