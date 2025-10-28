@@ -9,7 +9,6 @@
                 <span class="section-subtitle">Masterpieces</span>
                 <h2 class="section-title">Signature Collection</h2>
             </div>
-
             <div class="products-grid">
                 @foreach ($products as $product)
                     <div class="product-card">

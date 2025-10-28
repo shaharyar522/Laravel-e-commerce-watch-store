@@ -13,6 +13,7 @@
 <body>
 
     <div class="dashboard-container">
+
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
@@ -33,6 +34,7 @@
                 </ul>
             </div>
         </div>
+
 
         <!-- Main Content -->
         <div class="main-content">
@@ -169,6 +171,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 
 
@@ -274,19 +278,21 @@
     </div>
 
 
+
     <!-- Edit Modal-->
 
 
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+
         <div class="modal-dialog modal-lg modal-dialog-centered">
+
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <form id="editProductForm" action="{{ route('products.update', $product->id) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form id="editProductForm" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
@@ -299,11 +305,17 @@
                                     <option value="Exclusive">Exclusive</option>
                                     <option value="New Arrival">New Arrival</option>
                                     <option value="Bestseller">Bestseller</option>
+                                    <option value="Luxury Collection">Luxury Collection</option>
+                                    <option value="Trending">Trending</option>
+                                    <option value="Classic">Classic</option>
+                                    <option value="Special Edition">Special Edition</option>
+                                    <option value="On Sale">On Sale</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Product Image</label>
-                                <input type="file" id="editImageFile" name="image_file" class="form-control">
+                                <input type="file" id="editImageFile" placeholder="{{ $product->image_url }}"
+                                    name="image_file" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Image URL</label>
@@ -322,7 +334,7 @@
                                 <input type="text" id="editName" name="name" class="form-control">
                             </div>
                             <div class="col-12">
-                                <label class="form-label">{{ $product->description }}</label>
+                                <label class="form-label">Description</label>
                                 <textarea id="editDescription" name="description" class="form-control" rows="4"></textarea>
                             </div>
                             <div class="col-md-6">
@@ -340,11 +352,16 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Update Product</button>
                     </div>
+
                 </form>
+
 
             </div>
         </div>
     </div>
+
+
+
 
 
 
@@ -370,37 +387,43 @@
     </script>
 
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.editBtn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
+        $(document).ready(function() {
+            $('.editBtn').click(function() {
+                let id = $(this).data('id');
 
-                    // Fetch product data using AJAX
-                    fetch(`/products/${id}/edit`)
-                        .then(response => response.json())
-                        .then(product => {
-                            // Fill modal fields
-                            document.getElementById('editName').value = product.name;
-                            document.getElementById('editCategory').value = product.category;
-                            document.getElementById('editPrice').value = product.price;
-                            document.getElementById('editStock').value = product.stock;
-                            document.getElementById('editBadge').value = product.badge;
-                            document.getElementById('editDescription').value = product
-                                .description;
-                            document.getElementById('editOverlay').value = product
-                                .overlay_description;
-                            document.getElementById('editImageUrl').value = product.image_url;
+                $.ajax({
+                    url: `/admin/products/${id}/edit`,
+                    type: 'GET',
+                    success: function(product) {
+                        // Fill modal fields
+                        $('#editName').val(product.name);
+                        $('#editCategory').val(product.category);
+                        $('#editPrice').val(product.price);
+                        $('#editStock').val(product.stock);
+                        $('#editBadge').val(product.badge);
+                        $('#editDescription').val(product.description);
+                        $('#editOverlay').val(product.overlay_description);
+                        $('#editImageUrl').val(product.image_url);
 
-                            // Update form action
-                            document.getElementById('editProductForm').action =
-                                `/products/${id}`;
-                        })
-                        .catch(error => console.error('Error loading product:', error));
+                        // Update form action dynamically
+                        $('#editProductForm').attr('action', `/admin/products/${id}`);
+
+                        // Show the modal
+                        $('#editModal').modal('show');
+                    },
+                    error: function(xhr) {
+                        console.error('Error fetching product:', xhr.responseText);
+                        alert('Unable to load product data.');
+                    }
                 });
             });
         });
     </script>
+
+
 
 
 </body>

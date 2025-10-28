@@ -12,26 +12,11 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [ProductController::class, 'index'])->name('admin.dashboard');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+      Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+
     Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 });
 
 // Frontend routes
 Route::get('/', [ProductController::class, 'showFrontendProducts'])->name('frontend.products');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

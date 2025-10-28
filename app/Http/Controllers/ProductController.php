@@ -28,10 +28,7 @@ class ProductController extends Controller
 
 
 
-    public function create()
-    {
-        //
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -78,6 +75,7 @@ class ProductController extends Controller
             'price' => $request->price,
             'stock' => $request->stock,
         ]);
+
         return redirect()->back()->with('success', 'Product added successfully!');
     }
 
@@ -92,11 +90,12 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
-        $product = Product::findOrFail($id);
-        return response()->json($product);
-    }
+  public function edit($id)
+{
+    $product = Product::findOrFail($id);
+    return response()->json($product); // 👈 Return JSON for AJAX
+}
+
 
     /**
      * Update the specified resource in storage.
