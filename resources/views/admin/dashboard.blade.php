@@ -141,13 +141,26 @@
                                         <td>{{ $product->description }}</td>
                                         <td>{{ $product->price }}</td>
                                         <td><span class="badge badge-success">{{ $product->stock }}</span></td>
-                                        <td> <button type="button" class="btn btn-warning btn-sm editBtn"
+                                        <td>
+                                            <!-- Edit button -->
+                                            <button type="button" class="btn btn-warning btn-sm editBtn"
                                                 data-id="{{ $product->id }}" data-bs-toggle="modal"
                                                 data-bs-target="#editModal">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+
+                                            <!-- Delete form -->
+                                            <form action="{{ route('products.destroy', $product->id) }}" method="POST"
+                                                style="display:inline-block;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this product?');">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -271,7 +284,9 @@
                     <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form id="editProductForm" method="POST" enctype="multipart/form-data">
+
+                <form id="editProductForm" action="{{ route('products.update', $product->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
@@ -325,8 +340,8 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Update Product</button>
                     </div>
-
                 </form>
+
             </div>
         </div>
     </div>
@@ -355,35 +370,39 @@
     </script>
 
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.editBtn').forEach(button => {
-        button.addEventListener('click', function () {
-            const id = this.getAttribute('data-id');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.editBtn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
 
-            // Fetch product data using AJAX
-            fetch(`/products/${id}/edit`)
-                .then(response => response.json())
-                .then(product => {
-                    // Fill modal fields
-                    document.getElementById('editName').value = product.name;
-                    document.getElementById('editCategory').value = product.category;
-                    document.getElementById('editPrice').value = product.price;
-                    document.getElementById('editStock').value = product.stock;
-                    document.getElementById('editBadge').value = product.badge;
-                    document.getElementById('editDescription').value = product.description;
-                    document.getElementById('editOverlay').value = product.overlay_description;
-                    document.getElementById('editImageUrl').value = product.image_url;
+                    // Fetch product data using AJAX
+                    fetch(`/products/${id}/edit`)
+                        .then(response => response.json())
+                        .then(product => {
+                            // Fill modal fields
+                            document.getElementById('editName').value = product.name;
+                            document.getElementById('editCategory').value = product.category;
+                            document.getElementById('editPrice').value = product.price;
+                            document.getElementById('editStock').value = product.stock;
+                            document.getElementById('editBadge').value = product.badge;
+                            document.getElementById('editDescription').value = product
+                                .description;
+                            document.getElementById('editOverlay').value = product
+                                .overlay_description;
+                            document.getElementById('editImageUrl').value = product.image_url;
 
-                    // Update form action
-                    document.getElementById('editProductForm').action = `/products/${id}`;
-                })
-                .catch(error => console.error('Error loading product:', error));
+                            // Update form action
+                            document.getElementById('editProductForm').action =
+                                `/products/${id}`;
+                        })
+                        .catch(error => console.error('Error loading product:', error));
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
 
 
 </body>
+
 </html>
