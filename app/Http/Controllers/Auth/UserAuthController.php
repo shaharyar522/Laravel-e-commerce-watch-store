@@ -50,6 +50,8 @@ class UserAuthController extends Controller
 
     public function  login(Request $request)
     {
+
+        
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -57,6 +59,8 @@ class UserAuthController extends Controller
 
             return redirect()->route('home');
         }
+
+
 
         return back()->withErrors([
             'email' => 'Invalid credentials.',
