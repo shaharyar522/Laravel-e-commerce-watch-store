@@ -63,7 +63,7 @@
                     <p>Comprehensive warranty covering manufacturing defects for 5 years.</p>
                 </div>
                 <div class="feature-card">
-                    
+
                     <div class="feature-icon">
                         <i class="fas fa-user-cog"></i>
                     </div>

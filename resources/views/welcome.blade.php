@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <section class="products-section">
 
         <div class="container">
