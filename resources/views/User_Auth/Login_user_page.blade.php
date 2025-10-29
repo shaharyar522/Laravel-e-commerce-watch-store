@@ -331,7 +331,6 @@
                         <i class="fab fa-facebook-f"></i> Facebook
                     </button>
                 </div>
-
                 <div class="form-footer">
                     <p>Don't have an account? <a href="{{ route('user.register') }}">Create One</a></p>
                 </div>

@@ -57,10 +57,6 @@
                     </div>
                 </div>
 
-
-
-
-
                 <button type="submit" class="btn">Create Account</button>
                 <div class="form-footer">
                     <p>Already have an account? <a href="{{ route('user.login') }}">Sign In</a></p>
