@@ -17,6 +17,7 @@
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     count++;
+
                     cartCount.textContent = count;
 
                     // Show added to cart message
@@ -24,6 +25,7 @@
                     const productName = this.closest('.product-card').querySelector('.product-name').textContent;
                     // Create a custom notification
                     const notification = document.createElement('div');
+
                     notification.style.cssText = `
                         position: fixed;
                         top: 100px;
@@ -38,6 +40,7 @@
                         transform: translateX(150%);
                         transition: transform 0.4s ease;
                     `;
+                    
                     notification.textContent = `Added ${productName} to cart`;
                     document.body.appendChild(notification);
 

@@ -1,0 +1,70 @@
+@section('content')
+
+    <section class="products-section">
+
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Masterpieces</span>
+                <h2 class="section-title">Signature Collection</h2>
+            </div>
+            <div class="products-grid">
+                @foreach ($products as $product)
+                    <div class="product-card">
+                        @if ($product->badge)
+                            <div class="product-badge">{{ $product->badge }}</div>
+                        @endif
+                        <div class="product-image">
+                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}">
+                            @if ($product->overlay_description)
+                                <div class="product-overlay">
+                                    <p>{{ $product->overlay_description }}</p>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">{{ $product->category }}</div>
+                            <h3 class="product-name">{{ $product->name }}</h3>
+                            <p class="product-description">{{ $product->description }}</p>
+                            <div class="product-price">${{ number_format($product->price, 2) }}</div>
+                            <div class="product-actions">
+                                <button class="btn-add-to-cart">Add to Cart</button>
+                                <button class="btn-wishlist"><i class="far fa-heart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+@endsection
+
+
+ab mohjy compelte ek payment integartion ka flow bato.
+takay main wo apnay fufures main bhi use kr sakon.
+like wordpress shopify or ohter jaga.
+
+main ek beginner hn mohjy payment intergration ka koe idea nhi hian first time kr raha hn.
+now let me clear mohjy complete flow bato main ny ek dasbhoard say product ko add kr dia hain or daynamic wo mohjy mari webiste par show hn us main bhi roles or permission ko use kr lia hain.
+
+
+or main web front end k leuy main ny.
+
+registraion or login page ko baya hain ab mohjy complete ek flow bato payment integration k takay main us ko long terms use karo or ek hi flow ko rahkon ga.
+
+so main uay chat hn ahbi maray pass just ek front end page hain jo k product dashboard say aa rahi hian.
+
+us main compelte edit crud complete ahin ok
+
+ab next mohjy complete flow bato ka agr koe add to cart par click kary ga to kn sa page open  hnga or kahan jain ga.
+
+kasay kasy agay flow kam kray ga. mohjy es k baray bato explain kr step buy step or shat shat bato es ko main kasy karo ..
+
+ek complete flow mohjy es ka bato kasy payment show hngi kasy hnta hain kis ko amount cut hngi kahn say hngi line buy lihne or compelte flow bato.
+
+payment ka
+
+
+payment ka
+  <button class="btn-add-to-cart">Add to Cart</button>
+es buttun par click hn k bad agay kasy flow ayen ga complete ek proffessinl way m bato but uay main long term use karo ga freelncing m bhi on futures m bhi.
+
