@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 ChronoLux. All rights reserved. Crafted with precision since 1895.</p>
+                <p>&copy; 2025 Shari. All rights reserved. Crafted with precision.</p>
             </div>
         </div>
     </footer>

@@ -14,7 +14,9 @@
 
     <div class="dashboard-container">
 
+
         <!-- Sidebar -->
+
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <h2>Watch Store</h2>
@@ -30,13 +32,21 @@
                     <li><a href="#"><i class="fas fa-users"></i> <span>Customers</span></a></li>
                     <li><a href="#"><i class="fas fa-chart-bar"></i> <span>Analytics</span></a></li>
                     <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+                    <form action="{{ route('admin.logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link p-0 m-0"
+                            style="text-decoration: none; color: inherit;">
+                            <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                        </button>
+                    </form>
+
                 </ul>
             </div>
         </div>
 
 
         <!-- Main Content -->
+
         <div class="main-content">
             <!-- Top Navbar -->
             <div class="top-navbar">
@@ -171,6 +181,7 @@
                 </div>
             </div>
         </div>
+
 
 
     </div>
@@ -314,8 +325,8 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Product Image</label>
-                                <input type="file" id="editImageFile" placeholder="{{ $product->image_url }}"
-                                    name="image_file" class="form-control">
+                                <input type="file" id="editImageFile" placeholder="" name="image_file"
+                                    class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Image URL</label>

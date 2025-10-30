@@ -56,14 +56,19 @@ class UserAuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
             return redirect()->route('home');
         }
 
+        // If login fails → show SweetAlert + redirect to registration
+        return redirect()
+            ->route('user.register')
+            ->with('error', 'Your account is not registered. Please register first.');
+            
+    }
 
-
-        return back()->withErrors([
-            'email' => 'Invalid credentials.',
-        ]);
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('user.login');
     }
 }
