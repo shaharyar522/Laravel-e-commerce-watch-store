@@ -93,7 +93,7 @@
     <!-- Premium Footer -->
     @include('partials.footer');
 
-    <script src="{{ asset('js/main.js') }}"></script>
+
 </body>
 
 </html>

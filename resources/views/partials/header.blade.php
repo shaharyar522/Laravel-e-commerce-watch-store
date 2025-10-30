@@ -28,10 +28,13 @@
                     <i class="fas fa-user"></i>
                 </div>
 
-                <div class="header-icon">
+                <div class="header-icon" id="cart-icon">
                     <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count">2</span>
+                    <span class="cart-count" id="cart-count">
+                        {{ session('cart_count', 0) }}
+                    </span>
                 </div>
+
 
                 <!-- Moved logout button here -->
                 <form action="{{ route('user.logout.post') }}">
