@@ -22,12 +22,18 @@ class UsersSeeder extends Seeder
 
         // Create regular user
         $user = User::updateOrCreate(
+
             ['email' => 'user@gmail.com'],
+            
             [
+
                 'name' => 'Shari',
                 'password' => Hash::make('user123'),
+
             ]
+
         );
+
         $user->assignRole('user');
 
         // Create admin user
@@ -37,6 +43,7 @@ class UsersSeeder extends Seeder
                 'name' => 'Admin',
                 'password' => Hash::make('admin123'),
             ]
+
         );
         $admin->assignRole('admin');
     }
