@@ -605,16 +605,16 @@
             background: var(--gold);
             transition: var(--transition);
         }
-     
 
 
-        
+
+
 
         .footer-column a:hover {
             color: var(--gold);
             padding-left: 10px;
         }
-        
+
 
         .footer-column a:hover::before {
             width: 100%;
@@ -625,7 +625,7 @@
             gap: 1rem;
             margin-top: 1.5rem;
         }
-    
+
         .social-links a {
             display: inline-flex;
             align-items: center;
@@ -638,9 +638,9 @@
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-      
 
-    
+
+
         .social-links a:hover {
             background: var(--gold);
             color: var(--charcoal);
@@ -684,3 +684,122 @@
                 border-right: 1px solid rgba(212, 175, 55, 0.3);
             }
         }
+
+        /* logout */
+
+         /* Logout button styles */
+    .logout-btn {
+        background-color: transparent;
+        border: 1px solid #d4af37;
+        color: #d4af37;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-left: 10px;
+    }
+
+    .logout-btn:hover {
+        background-color: #d4af37;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .logout-btn i {
+        margin-right: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Update header actions to properly space items */
+    .header-actions {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    /* Responsive design for logout button */
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .logout-btn {
+            margin-left: 0;
+            margin-top: 10px;
+            justify-content: center;
+            width: 100%;
+            max-width: 150px;
+        }
+
+        .header-actions {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+/* Logout button styles */
+    .logout-btn {
+        background-color: transparent;
+        border: 1px solid #d4af37;
+        color: #d4af37;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s;
+        font-weight: 500;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-left: 10px;
+    }
+
+    .logout-btn:hover {
+        background-color: #d4af37;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .logout-btn i {
+        margin-right: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Update header actions to properly space items */
+    .header-actions {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    /* Responsive design for logout button */
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .logout-btn {
+            margin-left: 0;
+            margin-top: 10px;
+            justify-content: center;
+            width: 100%;
+            max-width: 150px;
+        }
+
+        .header-actions {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }

@@ -45,17 +45,45 @@ class CartController extends Controller
         $userId = Auth::id();
         $carts = Cart::with('product')->where('user_id', $userId)->get();
 
-        return view('cart.index', compact('carts'));
+        $total = $carts->sum(function ($item) {
+            return $item->product->price * $item->quantity;
+        });
+
+        return view('cart.index', compact('carts', 'total'));
     }
+
+
+    public function remove($id)
+    {
+        $userId = Auth::id();
+
+        // Find cart item in database
+        $cartItem = Cart::where('id', $id)
+            ->where('user_id', $userId)
+            ->first();
+
+        if ($cartItem) {
+            $cartItem->delete();
+        }
+
+        // Update cart count
+        $cart_count = Cart::where('user_id', $userId)->sum('quantity');
+        session(['cart_count' => $cart_count]);
+
+        return response()->json([
+            'message' => 'Item removed',
+            'cart_count' => $cart_count
+        ]);
+    }
+
+
+
+
     public function updateCart(Request $request)
     {
         foreach ($request->items as $item) {
-            Cart::where('id', $item['id'])
-                ->update(['quantity' => $item['quantity']]);
+            Cart::where('id', $item['id'])->update(['quantity' => $item['quantity']]);
         }
-
-        $cartCount = Cart::where('user_id', Auth::id())->sum('quantity');
-        session(['cart_count' => $cartCount]);
 
         return response()->json(['message' => 'Cart updated']);
     }

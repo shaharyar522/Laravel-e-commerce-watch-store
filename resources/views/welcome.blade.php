@@ -10,8 +10,11 @@
                 <h2 class="section-title">Signature Collection</h2>
             </div>
             <div class="products-grid">
+
                 @foreach ($products as $product)
+                
                     <div class="product-card">
+
                         @if ($product->badge)
                             <div class="product-badge">{{ $product->badge }}</div>
                         @endif
@@ -23,21 +26,24 @@
                                 </div>
                             @endif
                         </div>
+
                         <div class="product-info">
                             <div class="product-category">{{ $product->category }}</div>
                             <h3 class="product-name">{{ $product->name }}</h3>
                             <p class="product-description">{{ $product->description }}</p>
                             <div class="product-price">${{ number_format($product->price, 2) }}</div>
                             <div class="product-actions">
-                                <button class="btn-add-to-cart">Add to Cart</button>
                                 <button class="btn-add-to-cart" data-id="{{ $product->id }}">Add to Cart</button>
                             </div>
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
+
     </section>
+
 
     {{-- add to Add to Cart update --}}
     <script>
@@ -62,6 +68,8 @@
 
                         // Optional: show small toast message
                         showToast('Product added to cart!');
+                        // Redirect to Cart page
+                        window.location.href = "{{ route('cart.view') }}";
                     });
             });
         });
