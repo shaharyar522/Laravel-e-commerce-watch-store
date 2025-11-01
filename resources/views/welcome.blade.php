@@ -36,6 +36,7 @@
                                 <button class="btn-add-to-cart" data-id="{{ $product->id }}">Add to Cart</button>
                             </div>
                         </div>
+
                     </div>
                 @endforeach
 
@@ -69,8 +70,9 @@
                         // Optional: show small toast message
                         showToast('Product added to cart!');
                         // Redirect to Cart page
-                        window.location.href = "{{ route('cart.view') }}";
+
                     });
+
             });
         });
 

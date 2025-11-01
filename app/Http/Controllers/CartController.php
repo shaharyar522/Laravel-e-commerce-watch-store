@@ -11,31 +11,45 @@ class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
-        $productId = $request->input('product_id');
+
+        // where come from json add to card buttun
+
+        //   {
+        //   "product_id" : 6
+        //         }
+
+        $productId = $request->input('product_id');  // Get the product_id
         $userId = Auth::id();
 
+        // Now it checks if that product is already in this user's cart:
         $cart = Cart::where('user_id', $userId)
             ->where('product_id', $productId)
             ->first();
 
         if ($cart) {
-            $cart->quantity += 1;
+
+            $cart->quantity += 1;  // If it already exists, increase quantity
             $cart->save();
+
         } else {
             Cart::create([
                 'user_id' => $userId,
                 'product_id' => $productId,
                 'quantity' => 1,
             ]);
+
         }
 
         // Get new total count for header
         $cartCount = Cart::where('user_id', $userId)->sum('quantity');
+
         session(['cart_count' => $cartCount]);
 
         return response()->json([
+
             'message' => 'Product added to cart',
             'cart_count' => $cartCount
+
         ]);
     }
 
@@ -43,6 +57,7 @@ class CartController extends Controller
     public function viewCart()
     {
         $userId = Auth::id();
+
         $carts = Cart::with('product')->where('user_id', $userId)->get();
 
         $total = $carts->sum(function ($item) {

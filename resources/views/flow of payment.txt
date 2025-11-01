@@ -1,0 +1,57 @@
+flow  :
+
+1:
+add to cart :
+
+user_id | product_id | quantity |
+
+2:
+show /cart =>page
+product_name , quantity , price ,  total_amount
+two buttun ( updatepayment , checkout)
+
+3:
+click to checkout
+open page =>  address deatils for shiping + payment gateway
+Name, email , phone ,  address ,  paymentmetho ( stripe ,paypal , stipe , order_id , jazzcash , banktrnafer )
+
+backend : order_id , user_id , product_id , total_amount, status
+
+4:
+user select payment
+click payment gateway , pop or relired open user card details /payment info
+
+backend : send money , order_id , user_info , info to payment gateway Api
+
+---> success or ----Failure
+
+5:
+payment success | Failure
+
+  success :  then  in db  order.status = paid
+  and message show  ==> 'Thank you order id #1275 '
+  total price
+  (send email/sms confirm)
+
+  Failure : then  update order.status = failed
+  show message "payem fild try again "
+
+
+
+
+
+
+
+/////////////////////////////////////////
+
+first cart:
+
+
+
+note: first login/registraion must
+
+table => users , product , cart
+
+cart  table must be forekey in table users , and product
+
+and next  blade file and controller and  model and plus 
