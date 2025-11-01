@@ -1,0 +1,6 @@
+
+File	Relationship	Method name	Why
+User.php	hasMany(Cart::class)	✅ carts()	A user can have many carts
+Product.php	hasMany(Cart::class)	✅ carts()	A product can be in many carts
+Cart.php	belongsTo(User::class)	✅ user()	Each cart belongs to one user
+Cart.php	belongsTo(Product::class)	✅ product()	Each cart belongs to one product

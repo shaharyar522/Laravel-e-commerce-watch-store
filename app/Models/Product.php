@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
+
     use HasFactory;
 
     protected $fillable = [
@@ -19,4 +20,12 @@ class Product extends Model
         'price',
         'stock',
     ];
+
+    public function carts()
+    {
+
+        return $this->hasMany(Cart::class);
+
+    }
+
 }

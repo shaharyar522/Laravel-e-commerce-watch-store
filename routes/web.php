@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Frontend routes
-
+  
 Route::get('/', [AdminDashboardController::class, 'showFrontendProducts'])
     ->name('home')
     ->middleware(['user.role']);

@@ -12,7 +12,7 @@
             <div class="products-grid">
 
                 @foreach ($products as $product)
-                
+
                     <div class="product-card">
 
                         @if ($product->badge)
@@ -92,4 +92,7 @@
             setTimeout(() => toast.remove(), 2000);
         }
     </script>
+
+
+
 @endsection
