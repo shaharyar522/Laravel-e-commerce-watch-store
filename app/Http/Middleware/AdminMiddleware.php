@@ -20,7 +20,6 @@ class AdminMiddleware
         if (!Auth::check() || !Auth::user()->hasRole('admin')) {
             return redirect()->route('admin.login')->with('error', 'You are not authorized to access admin area.');
         }
-
         return $next($request);
     }
 }

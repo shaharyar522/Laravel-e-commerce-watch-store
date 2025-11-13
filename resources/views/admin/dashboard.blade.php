@@ -201,7 +201,7 @@
                 </div>
                 <form id="productForm" action="{{ route('products.store') }}" method="POST"
                     enctype="multipart/form-data">
-                    @csrf
+                    @csrf 
                     <div class="modal-body">
 
                         <div class="row g-3">

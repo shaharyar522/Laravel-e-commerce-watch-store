@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -25,7 +23,7 @@ class CartController extends Controller
         $cart = Cart::where('user_id', $userId)
             ->where('product_id', $productId)
             ->first();
-
+            
         if ($cart) {
 
             $cart->quantity += 1;  // If it already exists, increase quantity
@@ -37,10 +35,12 @@ class CartController extends Controller
                 'product_id' => $productId,
                 'quantity' => 1,
             ]);
-
         }
 
         // Get new total count for header
+        // in cart table count total user_id  like, user_id = 2 two
+
+
         $cartCount = Cart::where('user_id', $userId)->sum('quantity');
 
         session(['cart_count' => $cartCount]);
@@ -51,6 +51,7 @@ class CartController extends Controller
             'cart_count' => $cartCount
 
         ]);
+
     }
 
 

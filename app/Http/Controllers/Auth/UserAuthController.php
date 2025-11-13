@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -14,7 +13,7 @@ class UserAuthController extends Controller
     // Show registration page
     public function showRegistration()
     {
-        return view('User_Auth.Registration_user_page');
+        return view("User.");
     }
 
     public function register(Request $request)
@@ -63,7 +62,7 @@ class UserAuthController extends Controller
         return redirect()
             ->route('user.register')
             ->with('error', 'Your account is not registered. Please register first.');
-            
+
     }
 
     public function logout(Request $request)

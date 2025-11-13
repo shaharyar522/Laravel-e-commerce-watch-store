@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Frontend routes
-  
+
 Route::get('/', [AdminDashboardController::class, 'showFrontendProducts'])
     ->name('home')
     ->middleware(['user.role']);
@@ -60,4 +60,5 @@ Route::prefix('admin')->group(function () {
         Route::delete('/products/{id}', [AdminDashboardController::class, 'destroy'])->name('products.destroy');
 
     });
+    
 });

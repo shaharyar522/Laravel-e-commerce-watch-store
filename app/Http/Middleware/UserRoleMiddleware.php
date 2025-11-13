@@ -16,12 +16,10 @@ class UserRoleMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */ public function handle(Request $request, Closure $next)
     {
-
         if (!Auth::check()) {
             return redirect()->route('user.login');
         }
-        
         return $next($request);
-
     }
+    
 }
